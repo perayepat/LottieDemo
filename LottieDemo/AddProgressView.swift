@@ -1,13 +1,3 @@
-//
-// Created for LottieDemo
-// by  Stewart Lynch on 2022-12-25
-// Using Swift 5.0
-// Running on macOS 13.1
-// 
-// Folllow me on Mastodon: @StewartLynch@iosdev.space
-// Subscribe on YouTube: https://youTube.com/@StewartLynch
-// Buy me a ko-fi:  https://ko-fi.com/StewartLynch
-
 import SwiftUI
 
 struct AddProgressView: View {
@@ -31,7 +21,8 @@ struct AddProgressView: View {
                 }
                 .disabled(inProgress)
                 if inProgress {
-                    ProgressView()
+                    LottieView(name: Constants.blueDots, loopMode: .loop)
+                        .scaleEffect(0.3)
                 }
             }
             .navigationTitle("Custom Progress")
