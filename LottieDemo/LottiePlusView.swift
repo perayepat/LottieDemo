@@ -1,7 +1,8 @@
+
 import SwiftUI
 import Lottie
 
-struct LottiePlusView: UIViewRepresentable{
+struct LottiePlusView: UIViewRepresentable {
     let name: String
     let loopMode: LottieLoopMode
     let animationSpeed: CGFloat
@@ -13,7 +14,7 @@ struct LottiePlusView: UIViewRepresentable{
     init(name: String,
          loopMode: LottieLoopMode = .playOnce,
          animationSpeed: CGFloat = 1,
-         contentMode: UIView.ContentMode,
+         contentMode: UIView.ContentMode = .scaleAspectFit,
          play: Binding<Bool> = .constant(true)) {
         self.name = name
         self.animationView = LottieAnimationView(name: name)
@@ -32,15 +33,16 @@ struct LottiePlusView: UIViewRepresentable{
         animationView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         animationView.loopMode = loopMode
         animationView.animationSpeed = animationSpeed
-        return animationView
+        
+        return view
     }
     
     func updateUIView(_ uiView: UIView, context: Context) {
-            //MARK: - We need to be able to only play when a requirment is satisfied
-        if play{
-            animationView.play { condition in
+        if play {
+            animationView.play { _ in
                 play = false
             }
         }
     }
+
 }
